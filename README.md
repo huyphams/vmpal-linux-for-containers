@@ -116,3 +116,9 @@ tags, linked above. Version 1's buildkitd is Alpine's buildkit package.
 
 If you need the source of anything in Linux for containers that isn't here, or a file doesn't match, open an issue in
 this repository. Say which version and which file or package, and we'll add its source here.
+
+## Written offer
+
+For at least three years after VMPal last offers a version of Linux for containers for download, anyone can get its
+complete source from us, the same as here, on a disk or by download: email nick@tableplus.com and say which version.
+We charge no more than what sending it costs us.

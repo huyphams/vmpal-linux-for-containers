@@ -10,8 +10,10 @@ VMPal 0.90 and later download this version. It replaced version 1.
 | Kernel | Linux 7.3 (it calls itself 7.3.0), unmodified, no modules: [huyphams/linux, tag vmpal-v7.3](https://github.com/huyphams/linux/tree/vmpal-v7.3) |
 | Root disk | Alpine Linux 3.24.2 (aarch64): 44 packages from 30 origins, 22 of them copyleft ([packages.tsv](packages.tsv)) |
 | BusyBox | Alpine's busybox 1.37.0-r31 (`/bin/busybox` and `/bin/busybox.static`): [huyphams/busybox, tag vmpal-1.37.0-r31](https://github.com/huyphams/busybox/tree/vmpal-1.37.0-r31) |
+| Linked into BusyBox | utmps 0.1.3.3-r0 and skalibs 2.15.0.0-r0 (ISC), not in the root themselves ([linked.tsv](linked.tsv)) |
 | BuildKit | `/usr/bin/buildkitd` and `/usr/bin/buildctl`: [v0.34.0](https://github.com/moby/buildkit/tree/v0.34.0) (commit f5b59a1f2fb25a0cb7072c398cab9aed7835da4e) |
-| Release | [vm-2](https://github.com/huyphams/vmpal-linux-for-containers/releases/tag/vm-2): 22 source tars and 6 Go module zips, 153,613,730 bytes with SHA256SUMS |
+| Release | [vm-2](https://github.com/huyphams/vmpal-linux-for-containers/releases/tag/vm-2): 24 source tars and 6 Go module zips, 153,946,721 bytes with SHA256SUMS |
+| Licenses and notices | [NOTICES.txt](NOTICES.txt) |
 
 ## How it was built
 
@@ -30,6 +32,10 @@ VMPal 0.90 and later download this version. It replaced version 1.
   MPL-2.0; github.com/hashicorp/go-cleanhttp v0.5.2, go-immutable-radix/v2 v2.1.0, go-retryablehttp v0.7.8 and
   golang-lru/v2 v2.0.7) and github.com/spdx/tools-golang v0.5.7. Their zips are in the release; each one's h1 hash
   matches sum.golang.org and BuildKit's go.sum ([go-modules.tsv](go-modules.tsv)).
+- BusyBox: Alpine links utmps and skalibs into both of its programs statically. Their source is in the release too
+  (added 2026-10-21): `utmps-0.1.3.3-r0-source.tar` and `skalibs-2.15.0.0-r0-source.tar`, the versions Alpine 3.24's
+  package index has. With them, BusyBox's `VMPal/build.sh` builds `/bin/busybox` and `/bin/busybox.static` byte for
+  byte.
 
 ## Files no package installed
 

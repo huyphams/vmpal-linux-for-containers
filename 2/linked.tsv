@@ -1,0 +1,3 @@
+origin	version	license	aports	commit	linked into	source
+skalibs	2.15.0.0-r0	ISC	main/skalibs	f148233038fa9b35932a7996df29f110b32c2160	busybox	https://github.com/huyphams/vmpal-linux-for-containers/releases/download/vm-2/skalibs-2.15.0.0-r0-source.tar
+utmps	0.1.3.3-r0	ISC	main/utmps	900a4ecef77ae677eab8243b99f2c40cbf8ea35b	busybox	https://github.com/huyphams/vmpal-linux-for-containers/releases/download/vm-2/utmps-0.1.3.3-r0-source.tar

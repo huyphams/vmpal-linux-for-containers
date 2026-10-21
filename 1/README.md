@@ -8,10 +8,12 @@ VMPal 0.87, 0.88 and 0.89 download this version. VMPal 0.90 replaced it with ver
 | `Image` | 28,936,704 bytes, SHA-256 `bf9efb1ba2b095c663d2e9200876c8c85251bc3c8b7d791995b374731e17a16c` |
 | `root.ext4` | 1,073,741,824 bytes, SHA-256 `758699066c83c1fc38d209ecf38952751deb2951952db98a5e3587b775f2d290` |
 | Kernel | Linux 7.2.11, unmodified, no modules: [huyphams/linux, tag vmpal-v7.2.11](https://github.com/huyphams/linux/tree/vmpal-v7.2.11) |
-| Root disk | Alpine Linux 3.24.2 (aarch64): 52 packages from 35 origins, 27 of them copyleft ([packages.tsv](packages.tsv)) |
+| Root disk | Alpine Linux 3.24.2 (aarch64): 52 packages from 35 origins. The source of 27 origins is here: 22 copyleft ones, and 5 Apache-2.0 Go packages for the MPL-2.0 modules they link ([packages.tsv](packages.tsv)) |
 | BusyBox | Alpine's busybox 1.37.0-r31 (`/bin/busybox`): [huyphams/busybox, tag vmpal-1.37.0-r31](https://github.com/huyphams/busybox/tree/vmpal-1.37.0-r31) |
+| Linked into BusyBox | utmps 0.1.3.3-r0 and skalibs 2.15.0.0-r0 (ISC), not in the root themselves ([linked.tsv](linked.tsv)) |
 | BuildKit | `/usr/bin/buildctl`: [v0.33.1](https://github.com/moby/buildkit/tree/v0.33.1) (commit 8c91502cf280bd70a0c50912ce251c46a8881d9f); Alpine's buildkit 0.29.0-r3 package for the daemon |
-| Release | [vm-1](https://github.com/huyphams/vmpal-linux-for-containers/releases/tag/vm-1): 27 source tars and 2 Go module zips, 224,244,426 bytes with SHA256SUMS |
+| Release | [vm-1](https://github.com/huyphams/vmpal-linux-for-containers/releases/tag/vm-1): 29 source tars and 2 Go module zips, 224,577,417 bytes with SHA256SUMS |
+| Licenses and notices | [NOTICES.txt](NOTICES.txt) |
 
 ## How it was built
 
@@ -32,6 +34,9 @@ VMPal 0.87, 0.88 and 0.89 download this version. VMPal 0.90 replaced it with ver
   hash that v0.33.1's go.sum and sum.golang.org give. It links two MPL-2.0 modules:
   github.com/cyphar/filepath-securejoin v0.6.1 (whose pathrs-lite is MPL-2.0) and github.com/hashicorp/go-cleanhttp
   v0.5.2. Their zips are in the release ([go-modules.tsv](go-modules.tsv)).
+- BusyBox: Alpine links utmps and skalibs into it statically. Their source is in the release too (added
+  2026-10-21): `utmps-0.1.3.3-r0-source.tar` and `skalibs-2.15.0.0-r0-source.tar`, the versions Alpine 3.24's package
+  index has. With them, BusyBox's `VMPal/build.sh` builds `/bin/busybox` byte for byte.
 
 ## Files no package installed
 

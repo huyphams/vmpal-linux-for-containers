@@ -6,5 +6,7 @@ Kernel: Linux version 7.2.11 (root@ubuntu-vm-20) (gcc (Ubuntu 15.2.0-16ubuntu1) 
 Kernel configuration: embedded (IKCONFIG), SHA-256 e910a7cce60c7cf9906f4e87bcfa76c9d9621705129c5b85bab2f2b5bc956062, the same as Scripts/containers/kernel-config-arm64 at 430486da23c3732c0d2aa84440248e5bc1d00a23
 Alpine: 3.24.2 (aarch64), from https://dl-cdn.alpinelinux.org/alpine/v3.24/main, https://dl-cdn.alpinelinux.org/alpine/v3.24/community
 Packages: 52 from 35 origins; the source of 27 origins is published
+Linked into them, not in the root: skalibs 2.15.0.0-r0 (into busybox), utmps 0.1.3.3-r0 (into busybox); their source is published
 Go programs no package installs: /usr/bin/buildbridge, /usr/bin/buildctl; 2 copyleft modules published
+Notices: NOTICES.txt, 1846518 bytes
 Built by VMPal's scripts at 430486da23c3732c0d2aa84440248e5bc1d00a23

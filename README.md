@@ -4,7 +4,7 @@
 containers: an Arm64 Linux kernel from kernel.org, built with VMPal's configuration, and a root disk of Alpine Linux
 packages, BuildKit and VMPal's agent. VMPal downloads it from files.vmpal.com, and its container engine boots it with
 Apple's Virtualization framework. This repository has the source code of its GPL and other copyleft parts, for every
-version VMPal has shipped, and how each version was built.
+version VMPal has shipped, how each version was built, and the license texts and notices of all its parts.
 
 ## Versions
 
@@ -17,7 +17,9 @@ version VMPal has shipped, and how each version was built.
 | Kernel | Linux 7.3: [huyphams/linux, tag vmpal-v7.3](https://github.com/huyphams/linux/tree/vmpal-v7.3) |
 | BusyBox | Alpine's busybox 1.37.0-r31: [huyphams/busybox, tag vmpal-1.37.0-r31](https://github.com/huyphams/busybox/tree/vmpal-1.37.0-r31) |
 | Other packages | [2/packages.tsv](2/packages.tsv); their source in release [vm-2](https://github.com/huyphams/vmpal-linux-for-containers/releases/tag/vm-2) |
+| Linked into BusyBox | utmps 0.1.3.3-r0 and skalibs 2.15.0.0-r0 ([2/linked.tsv](2/linked.tsv)); their source in release [vm-2](https://github.com/huyphams/vmpal-linux-for-containers/releases/tag/vm-2) |
 | BuildKit | [v0.34.0](https://github.com/moby/buildkit/tree/v0.34.0); the MPL-2.0 modules it links in release [vm-2](https://github.com/huyphams/vmpal-linux-for-containers/releases/tag/vm-2) |
+| Licenses and notices | [2/NOTICES.txt](2/NOTICES.txt) |
 | Details | [2/README.md](2/README.md) |
 
 ### Linux for containers 1
@@ -29,15 +31,21 @@ version VMPal has shipped, and how each version was built.
 | Kernel | Linux 7.2.11: [huyphams/linux, tag vmpal-v7.2.11](https://github.com/huyphams/linux/tree/vmpal-v7.2.11) |
 | BusyBox | Alpine's busybox 1.37.0-r31: [huyphams/busybox, tag vmpal-1.37.0-r31](https://github.com/huyphams/busybox/tree/vmpal-1.37.0-r31) |
 | Other packages | [1/packages.tsv](1/packages.tsv); their source in release [vm-1](https://github.com/huyphams/vmpal-linux-for-containers/releases/tag/vm-1) |
+| Linked into BusyBox | utmps 0.1.3.3-r0 and skalibs 2.15.0.0-r0 ([1/linked.tsv](1/linked.tsv)); their source in release [vm-1](https://github.com/huyphams/vmpal-linux-for-containers/releases/tag/vm-1) |
 | BuildKit | buildctl [v0.33.1](https://github.com/moby/buildkit/tree/v0.33.1); the MPL-2.0 modules it links in release [vm-1](https://github.com/huyphams/vmpal-linux-for-containers/releases/tag/vm-1) |
+| Licenses and notices | [1/NOTICES.txt](1/NOTICES.txt) |
 | Details | [1/README.md](1/README.md) |
 
 ## What each version's folder has
 
 - `README.md`: how that version was built, and what's particular to it.
 - `packages.tsv`: every Alpine package in the root disk, with its version, origin (the aports folder Alpine builds it
-  from), license, whether it's copyleft, the aports commit Alpine built it from, and where its source is.
-- `aports/`: the aports folder of each copyleft origin at that commit: its APKBUILD and Alpine's patches and files.
+  from), license, whether that license is copyleft, the aports commit Alpine built it from, and where its source is.
+  A note says why a package with a permissive license has its source here.
+- `linked.tsv`: the libraries Alpine's builds link statically into the root's programs that aren't in the root
+  themselves (utmps and skalibs, in BusyBox), with the aports commit of each.
+- `aports/`: the aports folder of each origin whose source is here, at that commit: its APKBUILD and Alpine's patches
+  and files.
 - `distfiles.tsv`: every file those APKBUILDs download, with the SHA-512 the APKBUILD gives, where we fetched it
   (Alpine's distfiles mirror) and its upstream URL.
 - `go-modules.tsv`: the Go modules of the programs no package installs (BuildKit and VMPal's build bridge), with
@@ -45,9 +53,12 @@ version VMPal has shipped, and how each version was built.
 - `unpackaged.tsv`: every file in the root disk that no package installed.
 - `build-kernel.sh`, `build-root.sh`: VMPal's scripts that built that version.
 - `vm.txt`: the SHA-256 of the archive and its two files, the kernel's version string, the Alpine release.
+- `NOTICES.txt`: the license texts and notices of every part of that version: the kernel, each Alpine package, the
+  libraries linked into them, Go and each Go module, as each one's source has them.
 - `SHA256SUMS`: the SHA-256 of each file in that version's release.
 
-Each release, `vm-<n>`, has one `<origin>-<pkgver>-r<pkgrel>-source.tar` per copyleft origin, holding its aports
+Each release, `vm-<n>`, has one `<origin>-<pkgver>-r<pkgrel>-source.tar` per origin in `packages.tsv` and
+`linked.tsv` whose source is here, holding its aports
 folder (`aports/<main|community>/<origin>/`), every file its APKBUILD downloads (`distfiles/`) and `distfiles.tsv`.
 To build a package the way Alpine did, run Alpine's `abuild` in its aports folder on Alpine 3.24, with `SRCDEST` set
 to the `distfiles` folder. The release also has `gomod-<module>-<version>.zip` for each copyleft Go module, the exact
@@ -78,12 +89,16 @@ zip proxy.golang.org serves.
 
 ## Licenses
 
-Each package and module keeps its own license; `packages.tsv` and `go-modules.tsv` list them. Linux and BusyBox are
-under the GPL-2.0. The files from Alpine's aports are Alpine's. Nothing here changes any of these licenses.
+Each package and module keeps its own license; `packages.tsv`, `linked.tsv` and `go-modules.tsv` list them. Linux and
+BusyBox are under the GPL-2.0. The files from Alpine's aports are Alpine's. Nothing here changes any of these
+licenses. [LICENSES/](LICENSES) has the full texts of the GPL-2.0, GPL-3.0, LGPL-2.1 and MPL-2.0, and each version's
+`NOTICES.txt` has every part's license files and notices.
 
 Some sources here go beyond what the licenses ask for:
 - Packages with a permissive choice (libcap and zstd: BSD-3-Clause or GPL), and gcc's libgcc and libstdc++, which the
   GCC Runtime Library Exception covers.
+- utmps and skalibs (ISC), which Alpine links statically into BusyBox. Their versions are the ones Alpine 3.24's
+  package index has; with them, BusyBox's `VMPal/build.sh` builds VMPal's BusyBox files byte for byte.
 - Alpine's docker, containerd, runc, buildkit and docker-cli-buildx (version 1 only): Apache-2.0 themselves, but they
   link MPL-2.0 Go modules, which their tarballs carry in `vendor/`.
 - github.com/spdx/tools-golang, Apache-2.0 or GPL-2.0-or-later, linked by BuildKit 0.34.0.
@@ -94,7 +109,8 @@ VMPal's own programs in the root disk are not published here: `/sbin/vagent` (th
 golang.org/x/sys, golang.org/x/text and google.golang.org/protobuf (BSD-3-Clause), and google.golang.org/grpc and
 google.golang.org/genproto/googleapis/rpc (Apache-2.0).
 
-BuildKit's buildkitd and buildctl are Apache-2.0. VMPal builds them from BuildKit's release tags, linked above.
+BuildKit is Apache-2.0. Version 2's buildkitd and buildctl, and version 1's buildctl, are built from BuildKit's release
+tags, linked above. Version 1's buildkitd is Alpine's buildkit package.
 
 ## Something missing?
 

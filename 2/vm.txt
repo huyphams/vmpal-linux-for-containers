@@ -1,0 +1,10 @@
+Linux for containers 2
+Archive: https://files.vmpal.com/containers/2/vm.aar, 34453660 bytes, SHA-256 53095b4af9b60a76d9d7a10e7a98fa29a6756b5b0d3d66a0f35d729a169bf964
+Image: 29178368 bytes, SHA-256 3904222444b7e2444261b03177be45f984ba21d5afe34d50bea6c7a65f3fb5ad
+root.ext4: 1073741824 bytes, SHA-256 71bc489d9ab827600c8a39f3dcab18dcba89057fd025d57faa3b377cbdad8010
+Kernel: Linux version 7.3.0 (root@f94f0356354b) (gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0, GNU ld (GNU Binutils for Ubuntu) 2.46) #1 SMP PREEMPT Tue Oct 20 19:37:17 UTC 2026
+Kernel configuration: embedded (IKCONFIG), SHA-256 27758d4af73957ecc94b339fcd2ed1bb9a475806380f30fcd83e4bd950321d26, the same as Scripts/containers/kernel-config-arm64 at 4f51b6a785fd62f591bcb8bafa9cdb2da924308f
+Alpine: 3.24.2 (aarch64), from https://dl-cdn.alpinelinux.org/alpine/v3.24/main, https://dl-cdn.alpinelinux.org/alpine/v3.24/community
+Packages: 44 from 30 origins; the source of 22 origins is published
+Go programs no package installs: /usr/bin/buildbridge, /usr/bin/buildctl, /usr/bin/buildkitd; 6 copyleft modules published
+Built by VMPal's scripts at 4f51b6a785fd62f591bcb8bafa9cdb2da924308f

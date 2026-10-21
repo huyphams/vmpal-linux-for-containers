@@ -1,0 +1,8 @@
+path	bytes	sha256	what
+/dev/null	0	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	not a Go program
+/etc/group-	510	6fb6ab5a5526e6f4896b70c7e3c350fd475158a1f0d7b5fc0f3f9bd57f1c3be8	not a Go program
+/etc/resolv.conf	24	5c2c82cc57d0b24c3abd1f5ffc851af96a7274c8cae29cc797842ad13a13580a	not a Go program
+/sbin/vagent	132736	1e7c17ed79f8281d10738a8c33b9a6a6c6a349e6ac6764876061d0a26ce10379	not a Go program
+/usr/bin/buildbridge	11927714	8665b40e72eff470019dd3d52b15c62cf9545cee96ec9d593a064b5d0f7892b1	Go program (go1.26.5): vmpal.local/buildbridge (devel)
+/usr/bin/buildctl	22413474	c09b05f1dbd8f1563abe401ae0443b657e01b4b2b1cce7457b41157fa621ad65	Go program (go1.26.8): github.com/moby/buildkit (devel)
+/var/log/apk.log	401	7a701c4a797adaf9ad934a2eff249db379f0924a6e8aa23af3678394bcc0f575	not a Go program
